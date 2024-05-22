@@ -1,0 +1,49 @@
+﻿version: "3.8"
+
+services:
+  postgres_rental_db:
+    image: postgres:16.2
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: rentalapi
+      POSTGRES_PASSWORD: S%5_J#G9H-#Tau*e
+      POSTGRES_DB: rental_db
+    ports:
+      - "5432:5432"
+    networks:
+      - motorentalservice
+
+  motorentalservice_api:
+    build:
+      context: .
+      dockerfile: MotoRentalService.API/Dockerfile
+    image: moto_rental_service:latest
+    container_name: moto_rental_service
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__RENTAL_DSN=Host=postgres_rental_db;Port=5432;Username=rentalapi;Password=S%5_J#G9H-#Tau*e;Database=rental_db;
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres_rental_db
+    networks:
+      - motorentalservice
+
+  migration:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["./entrypoint.sh"]
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__RENTAL_DSN=Host=postgres_rental_db;Port=5432;Username=rentalapi;Password=S%5_J#G9H-#Tau*e;Database=rental_db;
+    depends_on:
+      - postgres_rental_db
+    networks:
+      - motorentalservice
+    volumes:
+      - .:/app
+
+networks:
+  motorentalservice:
+    driver: bridge
