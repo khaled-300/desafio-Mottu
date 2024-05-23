@@ -74,31 +74,9 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Rental API", Version = "v1", Description = "web api to rent a motorcycle using .Net 8" });
     c.CustomSchemaIds(type => type.Name);
     c.IgnoreObsoleteActions();
-    var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(x => x.GetName().Name.StartsWith("MotoRentalService")).ToList();
-    if(assemblies != null && assemblies.Count > 0)
-    {
-        foreach (var assembly in assemblies)
-        {
-            if (assembly == null) continue;
-
-            var types = assembly.GetExportedTypes();
-            foreach (var type in types)
-            {
-                if (!type.IsClass)
-                {
-                    continue;
-                }
-                Log.Information($"Scanning type: {type.Name}");
-            }
-        }
-    }
     c.SchemaFilter<SwaggerExcludeSchemaFilter>();
     c.OperationFilter<FormSchemaFilter>();
 
-    //c.UseAllOfToExtendReferenceSchemas();
-
-    //c.SchemaFilter<JsonIgnoreSchemaFilter>();
-    //c.SchemaFilter<EnumSchemaFilter>();
 
     foreach (var file in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.xml"))
     {
@@ -137,7 +115,7 @@ builder.Services.AddSwaggerGen(c =>
             }
         });
 });
-
+builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

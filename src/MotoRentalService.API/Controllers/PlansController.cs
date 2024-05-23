@@ -12,7 +12,7 @@ namespace MotoRentalService.API.Controllers
     /// <summary>
     /// Controller for managing rental plans.
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     [Authorize]
     public class PlansController : ControllerBase
@@ -66,7 +66,7 @@ namespace MotoRentalService.API.Controllers
         /// </summary>
         /// <param name="cancellationToken">Cancellation token for canceling the request.</param>
         /// <returns>An IActionResult that contains the fetched all rental plans or an error message.</returns>
-        [HttpGet("get-all")]
+        [HttpGet]
         [Consumes("application/json")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(IEnumerable<PlanDto>), StatusCodes.Status200OK)]
@@ -93,6 +93,21 @@ namespace MotoRentalService.API.Controllers
         /// <summary>
         /// Creates a new rental plan.
         /// </summary>
+        /// <remarks>
+        /// This endpoint expects a JSON request containing details for the new rental plan. 
+        /// 
+        /// Sample request:
+        /// 
+        /// ```json
+        /// {
+        ///   "name": "Weekend Getaway",
+        ///   "durationInDays": 2,
+        ///   "dailyRate": 50.00,
+        ///   "isActive": true
+        /// }
+        /// ```
+        /// 
+        /// </remarks>
         /// <param name="request">The request with the details needed to create a plan.</param>
         /// <param name="cancellationToken">Cancellation token for canceling the request.</param>
         /// <returns>An IActionResult that indicates the result of creating the plan.</returns>
@@ -134,7 +149,22 @@ namespace MotoRentalService.API.Controllers
         /// <summary>
         /// Updates an existing rental plan.
         /// </summary>
-        /// <param name="id">The ID of the rental plan to update.</param>
+        /// <remarks>
+        /// This endpoint expects a JSON request containing updated details for the rental plan identified by the provided ID in the URL path.
+        /// 
+        /// Sample request:
+        /// 
+        /// ```json
+        /// {
+        ///   "name": "Weekend Adventure (Updated)",
+        ///   "durationInDays": 3,
+        ///   "dailyRate": 60.00,
+        ///   "isActive": true
+        /// }
+        /// ```
+        /// 
+        /// </remarks>
+        /// <param name="id">The ID of the rental plan to update (in the URL path).</param>
         /// <param name="request">The request with the updated plan details.</param>
         /// <param name="cancellationToken">Cancellation token for canceling the request.</param>
         /// <returns>An IActionResult that indicates the result of updating the plan.</returns>

@@ -9,20 +9,24 @@ This project uses Docker Compose to manage its dependencies and run the applicat
   Building and Running the Application
 
 You can run the commands to know if docker and docker-componse are installed.
+
 ```sh
 docker --version
 docker-compose --version
 ```
 
-Navigate to the project directory: Open your terminal and navigate to the directory of name `src` folder where the `docker-compose.yml` file resides.
+Navigate to the project directory: Open your terminal and navigate to `src` folder where the `docker-compose.yml` file resides.
 
 ## Build and start the services:
 
 ### Run the following command in your terminal:
+
 command Bash:
+
 ```sh
 docker-compose up -d
 ```
+
 This command will:
 
 Build the Docker image for the motorentalservice_api service based on the Dockerfile in the MotoRentalService.API directory.
@@ -35,14 +39,18 @@ Verify application status:
 Check if the containers are running:
 
 command Bash:
+
 ```sh
 docker-compose ps
 ```
+
 View container logs (if needed):
 command Bash:
+
 ```sh
 docker-compose logs <service_name>
 ```
+
 Replace `<service_name>` with the specific service name (e.g., `motorentalservice_api`).
 
 ## Accessing the Application
@@ -54,3 +62,10 @@ The MotoRentalService API will be accessible on port 8080 of your host machine. 
 To stop the running services, use `docker-compose down`.
 To rebuild the containers with any code changes, run docker-compose up `-d` again.
 
+# How to test the API
+
+The MotoRentalService API can be tested using swagger interface or the Postman and other ways of the sending the requests to the API.
+
+- First create your user in the api using the Sample request provided in the api endpoint.
+- Login to the api using the user just created before with the email and password.
+- Then you are free to use the api, this is extra functionality to authenticate the user based on the role.
