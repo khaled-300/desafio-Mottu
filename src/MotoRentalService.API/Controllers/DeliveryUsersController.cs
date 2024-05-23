@@ -185,7 +185,7 @@ namespace MotoRentalService.API.Controllers
                 var user = GetUserDataFromToken();
                 if (user != null && !user.Id.Equals(command.Id))
                 {
-                    return Forbid("You are not authorized to update this user.");
+                    return StatusCode(StatusCodes.Status403Forbidden, new { Error = "You are not authorized to update this user." });
                 }
 
                 var result = await _mediator.Send(command, cancellationToken);
