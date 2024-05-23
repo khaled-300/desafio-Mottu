@@ -14,7 +14,7 @@ docker --version
 docker-compose --version
 ```
 
-Navigate to the project directory: Open your terminal and navigate to the root directory of your `src` folder where the `docker-compose.yml` file resides.
+Navigate to the project directory: Open your terminal and navigate to the directory of name `src` folder where the `docker-compose.yml` file resides.
 
 ## Build and start the services:
 
