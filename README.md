@@ -69,3 +69,4 @@ The MotoRentalService API can be tested using swagger interface or the Postman a
 - First create your user in the api using the Sample request provided in the api endpoint.
 - Login to the api using the user just created before with the email and password.
 - Then you are free to use the api, this is extra functionality to authenticate the user based on the role.
+- The delivery user is going to be created based on the auth user. After the creation of the delivery user you can go for rent after selecting the rental plan and the motorcycle.
