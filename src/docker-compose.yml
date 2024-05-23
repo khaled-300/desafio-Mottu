@@ -33,7 +33,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: ["./entrypoint.sh"]
+    command: ["/bin/sh", "./entrypoint.sh"]
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__RENTAL_DSN=Host=postgres_rental_db;Port=5432;Username=rentalapi;Password=S%5_J#G9H-#Tau*e;Database=rental_db;
