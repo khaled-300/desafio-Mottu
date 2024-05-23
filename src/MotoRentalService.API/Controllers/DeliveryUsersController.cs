@@ -17,7 +17,7 @@ namespace MotoRentalService.API.Controllers
     /// </summary>
     [Route("api/v1/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class DeliveryUsersController : ControllerBase
     {
         private readonly IMediator _mediator;
