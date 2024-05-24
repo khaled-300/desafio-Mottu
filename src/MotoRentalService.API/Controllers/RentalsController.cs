@@ -123,7 +123,6 @@ namespace MotoRentalService.API.Controllers
         /// 
         /// ```json
         /// {
-        ///   "id": 123,
         ///   "returnDate": "2024-05-28T00:00:00Z"
         /// }
         /// ```
