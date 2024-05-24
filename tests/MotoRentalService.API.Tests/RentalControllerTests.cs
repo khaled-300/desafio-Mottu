@@ -13,17 +13,17 @@ using MotoRentalService.Application.Request.Rental;
 
 namespace MotoRentalService.API.Tests
 {
-    public class RentalControllerTests
+    public class RentalsControllerTests
     {
         private readonly Mock<IMediator> _mediatorMock;
-        private readonly Mock<ILogger<RentalController>> _loggerMock;
-        private readonly RentalController _controller;
+        private readonly Mock<ILogger<RentalsController>> _loggerMock;
+        private readonly RentalsController _controller;
 
-        public RentalControllerTests()
+        public RentalsControllerTests()
         {
             _mediatorMock = new Mock<IMediator>();
-            _loggerMock = new Mock<ILogger<RentalController>>();
-            _controller = new RentalController(_mediatorMock.Object, _loggerMock.Object);
+            _loggerMock = new Mock<ILogger<RentalsController>>();
+            _controller = new RentalsController(_mediatorMock.Object, _loggerMock.Object);
         }
 
 
@@ -199,7 +199,7 @@ namespace MotoRentalService.API.Tests
                          .ReturnsAsync(resultDto);
 
             // Act
-            var result = await _controller.SimulateReturnDateAsync(request, cancellationToken);
+            var result = await _controller.SimulateReturnDateAsync(request.Id, request, cancellationToken);
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);
@@ -221,7 +221,7 @@ namespace MotoRentalService.API.Tests
                              .ReturnsAsync(resultDto);
 
             // Act
-            var result = await _controller.SimulateReturnDateAsync(request, cancellationToken);
+            var result = await _controller.SimulateReturnDateAsync(request.Id, request, cancellationToken);
 
             // Assert
             var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
@@ -239,7 +239,7 @@ namespace MotoRentalService.API.Tests
                          .ThrowsAsync(new Exception("Test exception"));
 
             // Act
-            var result = await _controller.SimulateReturnDateAsync(request, cancellationToken);
+            var result = await _controller.SimulateReturnDateAsync(request.Id, request, cancellationToken);
 
             // Assert
             var statusCodeResult = Assert.IsType<ObjectResult>(result);

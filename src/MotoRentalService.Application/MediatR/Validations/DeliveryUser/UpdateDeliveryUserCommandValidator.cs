@@ -10,7 +10,7 @@ namespace MotoRentalService.Application.MediatR.Validations.DeliveryUser
             RuleFor(m => m.Id).NotEmpty().WithName("Id");
             RuleFor(p => p.LicenseNumber).NotEmpty().WithName("License Number").WithMessage("Driver's License Number should not be empty");
             RuleFor(m => m.LicenseNumber)
-                .MaximumLength(10)
+                .MaximumLength(11)
                 .When(x => !string.IsNullOrEmpty(x.LicenseNumber))
                 .Matches(@"^\d+$").WithMessage("Driver's License Number should only contain numbers.");
 

@@ -54,7 +54,7 @@ namespace MotoRentalService.Domain.Tests.Services
                 MotorcycleId = 1,
                 UserId = 1,
                 RentalPlanId = 1,
-                StartDate = DateTime.UtcNow,
+                StartDate = DateTime.UtcNow.AddDays(1),
                 EndDate = DateTime.UtcNow.AddDays(7)
             };
 
@@ -81,7 +81,7 @@ namespace MotoRentalService.Domain.Tests.Services
                 MotorcycleId = 1,
                 UserId = deliveryUser.Id,
                 RentalPlanId = 1,
-                StartDate = DateTime.UtcNow,
+                StartDate = DateTime.UtcNow.AddDays(1),
                 EndDate = DateTime.UtcNow.AddDays(7)
             };
 
@@ -102,7 +102,7 @@ namespace MotoRentalService.Domain.Tests.Services
                 MotorcycleId = 1,
                 UserId = 1,
                 RentalPlanId = 1,
-                StartDate = DateTime.UtcNow,
+                StartDate = DateTime.UtcNow.AddDays(1),
                 EndDate = DateTime.UtcNow.AddDays(7)
             };
 
@@ -125,7 +125,7 @@ namespace MotoRentalService.Domain.Tests.Services
                 MotorcycleId = motorcycle.Id,
                 UserId = 1,
                 RentalPlanId = 1,
-                StartDate = DateTime.UtcNow,
+                StartDate = DateTime.UtcNow.AddDays(1),
                 EndDate = DateTime.UtcNow.AddDays(7)
             };
 
@@ -174,7 +174,7 @@ namespace MotoRentalService.Domain.Tests.Services
                 MotorcycleId = motorcycle.Id,
                 UserId = deliveryUser.Id,
                 RentalPlanId = 1,
-                StartDate = DateTime.UtcNow,
+                StartDate = DateTime.UtcNow.AddDays(1),
                 EndDate = DateTime.UtcNow.AddDays(7)
             };
 
@@ -220,7 +220,7 @@ namespace MotoRentalService.Domain.Tests.Services
                 MotorcycleId = motorcycle.Id,
                 UserId = deliveryUser.UserId,
                 RentalPlanId = plan.Id,
-                StartDate = DateTime.UtcNow,
+                StartDate = DateTime.UtcNow.AddDays(1),
                 EndDate = DateTime.UtcNow.AddDays(7),
                 ExpectedEndDate = DateTime.UtcNow.AddDays(7),
                 DailyRate = 100m,
@@ -277,7 +277,7 @@ namespace MotoRentalService.Domain.Tests.Services
                 MotorcycleId = 1,
                 UserId = 1,
                 RentalPlanId = 1,
-                StartDate = DateTime.UtcNow,
+                StartDate = DateTime.UtcNow.AddDays(1),
                 EndDate = DateTime.UtcNow.AddDays(7),
                 ExpectedEndDate = DateTime.UtcNow.AddDays(7),
                 DailyRate = 100m,
@@ -305,7 +305,7 @@ namespace MotoRentalService.Domain.Tests.Services
                 MotorcycleId = 1,
                 UserId = 1,
                 RentalPlanId = 1,
-                StartDate = DateTime.UtcNow,
+                StartDate = DateTime.UtcNow.AddDays(1),
                 EndDate = DateTime.UtcNow.AddDays(7),
                 ExpectedEndDate = DateTime.UtcNow.AddDays(7),
                 DailyRate = 100m,
@@ -332,7 +332,7 @@ namespace MotoRentalService.Domain.Tests.Services
                 MotorcycleId = motorcycle.Id,
                 UserId = deliveryUser.UserId,
                 RentalPlanId = 1,
-                StartDate = DateTime.UtcNow,
+                StartDate = DateTime.UtcNow.AddDays(1),
                 EndDate = DateTime.UtcNow.AddDays(7),
                 ExpectedEndDate = DateTime.UtcNow.AddDays(7),
                 DailyRate = 100m,

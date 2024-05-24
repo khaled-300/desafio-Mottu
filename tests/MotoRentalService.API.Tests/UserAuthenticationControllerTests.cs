@@ -11,17 +11,17 @@ using MotoRentalService.Application.Request.Auth;
 
 namespace MotoRentalService.API.Tests
 {
-    public class UserAuthenticationControllerTests
+    public class UsersAuthenticationControllerTests
     {
         private readonly Mock<IMediator> _mediatorMock;
-        private readonly Mock<ILogger<UserAuthenticationController>> _loggerMock;
-        private readonly UserAuthenticationController _controller;
+        private readonly Mock<ILogger<UsersAuthenticationController>> _loggerMock;
+        private readonly UsersAuthenticationController _controller;
 
-        public UserAuthenticationControllerTests()
+        public UsersAuthenticationControllerTests()
         {
             _mediatorMock = new Mock<IMediator>();
-            _loggerMock = new Mock<ILogger<UserAuthenticationController>>();
-            _controller = new UserAuthenticationController(_mediatorMock.Object, _loggerMock.Object);
+            _loggerMock = new Mock<ILogger<UsersAuthenticationController>>();
+            _controller = new UsersAuthenticationController(_mediatorMock.Object, _loggerMock.Object);
         }
         
         [Fact]

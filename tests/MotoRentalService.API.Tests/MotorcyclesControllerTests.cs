@@ -16,14 +16,14 @@ namespace MotoRentalService.API.Tests
     public class MotorcyclesControllerTests
     {
         private readonly Mock<IMediator> _mediatorMock;
-        private readonly Mock<ILogger<MotorcycleController>> _loggerMock;
-        private readonly MotorcycleController _controller;
+        private readonly Mock<ILogger<MotorcyclesController>> _loggerMock;
+        private readonly MotorcyclesController _controller;
 
         public MotorcyclesControllerTests()
         {
             _mediatorMock = new Mock<IMediator>();
-            _loggerMock = new Mock<ILogger<MotorcycleController>>();
-            _controller = new MotorcycleController(_mediatorMock.Object, _loggerMock.Object);
+            _loggerMock = new Mock<ILogger<MotorcyclesController>>();
+            _controller = new MotorcyclesController(_mediatorMock.Object, _loggerMock.Object);
         }
 
         [Fact]
@@ -235,11 +235,16 @@ namespace MotoRentalService.API.Tests
                 }
             };
 
+            var command = new UpdateMotoCommand
+            {
+                LicensePlate = licensePlate
+            };
+
             _mediatorMock.Setup(m => m.Send(It.IsAny<UpdateMotoCommand>(), It.IsAny<CancellationToken>()))
                          .ReturnsAsync(commandResult);
 
             // Act
-            var result = await _controller.UpdateMotorcycleAsync(motorcycleId, licensePlate, CancellationToken.None);
+            var result = await _controller.UpdateMotorcycleAsync(motorcycleId, command, CancellationToken.None);
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);
@@ -260,9 +265,13 @@ namespace MotoRentalService.API.Tests
             };
             _mediatorMock.Setup(m => m.Send(It.IsAny<UpdateMotoCommand>(), It.IsAny<CancellationToken>()))
                          .ReturnsAsync(commandResult);
+            var command = new UpdateMotoCommand
+            {
+                LicensePlate = licensePlate
+            };
 
             // Act
-            var result = await _controller.UpdateMotorcycleAsync(motorcycleId, licensePlate, CancellationToken.None);
+            var result = await _controller.UpdateMotorcycleAsync(motorcycleId, command, CancellationToken.None);
 
             // Assert
             var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
@@ -278,9 +287,12 @@ namespace MotoRentalService.API.Tests
             var licensePlate = "XYZ123";
             _mediatorMock.Setup(m => m.Send(It.IsAny<UpdateMotoCommand>(), It.IsAny<CancellationToken>()))
                          .ThrowsAsync(new Exception("Test exception"));
-
+            var command = new UpdateMotoCommand
+            {
+                LicensePlate = licensePlate
+            };
             // Act
-            var result = await _controller.UpdateMotorcycleAsync(motorcycleId, licensePlate, CancellationToken.None);
+            var result = await _controller.UpdateMotorcycleAsync(motorcycleId, command, CancellationToken.None);
 
             // Assert
             var statusCodeResult = Assert.IsType<ObjectResult>(result);

@@ -24,7 +24,7 @@ namespace MotoRentalService.API.Controllers
         private readonly ILogger<DeliveryUsersController> _logger;
 
         /// <summary>
-        /// Constructor for UserController.
+        /// Constructor for DeliveryUsersController.
         /// </summary>
         /// <param name="mediator">The Mediator instance.</param>
         /// <param name="logger">The Logger instance.</param>
@@ -88,7 +88,7 @@ namespace MotoRentalService.API.Controllers
         ///    - Name (e.g., John Smith)
         ///    - CNPJ (e.g., 12345678901234)
         ///    - DateOfBirth (e.g., 1990-01-01) - Use ISO 8601 format (YYYY-MM-DD)
-        ///    - LicenseNumber (e.g., ABC-1234)
+        ///    - LicenseNumber (e.g., 16379141732)
         ///    - LicenseType (Select the appropriate enum value from the API documentation)
         ///    - LicenseImage (Upload the license image file)
         /// 

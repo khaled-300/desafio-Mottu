@@ -75,7 +75,7 @@ namespace MotoRentalService.API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while creating rental.");
-                return StatusCode(500, "An error occurred while processing your request.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while processing your request.");
             }
         }
 
@@ -105,7 +105,7 @@ namespace MotoRentalService.API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while fetching rental details.");
-                return StatusCode(500, "An error occurred while processing your request.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while processing your request.");
             }
         }
 
@@ -132,19 +132,19 @@ namespace MotoRentalService.API.Controllers
         /// <param name="request">The request containing the rental ID and the new return date.</param>
         /// <param name="cancellationToken">Cancellation token for canceling the request.</param>
         /// <returns>An IActionResult containing the result of the operation with the calculated total value of the rental contract.</returns>
-        [HttpPost("simulate-return-date")]
+        [HttpPost("simulate-return-date/{rentalId}")]
         [Consumes("application/json")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(SimulateTotalValueResult), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(SimulateTotalValueResult), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> SimulateReturnDateAsync([FromBody] SimulateTotalValueRequest request, CancellationToken cancellationToken)
+        public async Task<IActionResult> SimulateReturnDateAsync(int rentalId, [FromBody] SimulateTotalValueRequest request, CancellationToken cancellationToken)
         {
             try
             {
                 var command = new SimulateTotalValueCommand
                 {
-                    Id = request.Id,
+                    Id = rentalId,
                     ReturnDate = request.ReturnDate
                 };
                 var result = await _mediator.Send(command, cancellationToken);
@@ -157,7 +157,7 @@ namespace MotoRentalService.API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while updating return date of rental.");
-                return StatusCode(500, "An error occurred while processing your request.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while processing your request.");
             }
         }
     }

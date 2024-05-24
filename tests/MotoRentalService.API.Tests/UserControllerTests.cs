@@ -15,17 +15,17 @@ using System.Text;
 
 namespace MotoRentalService.API.Tests
 {
-    public class UserControllerTests
+    public class DeliveryUsersControllerTests
     {
         private readonly Mock<IMediator> _mediatorMock;
-        private readonly Mock<ILogger<UserController>> _loggerMock;
-        private readonly UserController _controller;
+        private readonly Mock<ILogger<DeliveryUsersController>> _loggerMock;
+        private readonly DeliveryUsersController _controller;
         
-        public UserControllerTests()
+        public DeliveryUsersControllerTests()
         {
             _mediatorMock = new Mock<IMediator>();
-            _loggerMock = new Mock<ILogger<UserController>>();
-            _controller = new UserController(_mediatorMock.Object, _loggerMock.Object)
+            _loggerMock = new Mock<ILogger<DeliveryUsersController>>();
+            _controller = new DeliveryUsersController(_mediatorMock.Object, _loggerMock.Object)
             {
                 // Set the mock user context
                 ControllerContext = MockHttpContextWithUser()
