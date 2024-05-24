@@ -24,7 +24,7 @@ Navigate to the project directory: Open your terminal and navigate to `src` fold
 command Bash:
 
 ```sh
-docker-compose up -d
+docker-compose up -d --build
 ```
 
 This command will:
@@ -70,3 +70,11 @@ The MotoRentalService API can be tested using swagger interface or the Postman a
 - Login to the api using the user just created before with the email and password.
 - Then you are free to use the api, this is extra functionality to authenticate the user based on the role.
 - The delivery user is going to be created based on the auth user. After the creation of the delivery user you can go for rent after selecting the rental plan and the motorcycle.
+
+## Generate the token.
+copy the token and go to the swagger ui and click on the authorize button 
+![image](https://github.com/khaled-300/desafio-Mottu/assets/47085352/d4e4ac84-48dd-48b4-a1a6-616923862bbc)
+and follow the next step to authenticate the api.
+![image](https://github.com/khaled-300/desafio-Mottu/assets/47085352/1f32c8c0-7692-4dc4-9ca6-929b941eb023)
+
+now API is authenticated and ready to use.
